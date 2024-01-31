@@ -1,5 +1,6 @@
 package Beatbox;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.awt.*;
 import javax.swing.*;
 import javax.sound.midi.*;
@@ -177,6 +178,7 @@ public class BeatBox {
     try {
     FileInputStream fileIn = new FileInputStream(new File("Checkbox.ser"));
     ObjectInputStream is = new ObjectInputStream(fileIn);
+    ObjectInputFilters.enableObjectFilterIfUnprotected(is);
     checkboxState = (boolean[]) is.readObject();
    
     } catch(Exception ex) {ex.printStackTrace();}
